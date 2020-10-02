@@ -5,6 +5,7 @@ if [[ -z "$LC_ALL" ]]; then
   export LC_ALL='en_GB.UTF-8'
 fi
 
+# Colour setup
 autoload -U colors && colors
 autoload colors && colors
 for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
@@ -13,22 +14,7 @@ for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
 done
 eval RESET='%{$reset_color%}'
 
-#C_Off='\e[0m\'       # reset
-#White='\[\e[0;37m\]'    # White
-#Red='\[\e[0;31m\]'      # Red
-#BRed='\[\e[1;31m\]'     # Bold Red
-#Green='\[\e[0;32m\]'    # Green
-#BGreen='\[\e[1;32m\]'   # Bold Green
-#Yellow='\e[0;33m\'   # Yellow
-#Cyan='\[\e[0;36m\]'     # Cyan
-#FancyX='\342\234\227'
-#Checkmark='\342\234\223'
-
-#default colors
-#PROMPT='[\u@\h \W]\$ '
-#green colors
-# export PROMPT="$Green\u@\h$Yellow\$(__git_ps1) $Cyan\W $BGreen\$ $C_Off"
-
+# Customise command prompt
 set_prompt () {
 #        Last_Command=$? # Must come first!
 
@@ -71,5 +57,12 @@ alias rm='rm -f'
 alias ftags='ctags --fortran-kinds=+i *.f'      # fortran tags 
 #alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 
+# Fzf quick cd
+fd() {
+        local dir
+        dir=$(find ${1:-.} -path '*/\.*' -prune \
+                -o -type d -print 2> /dev/null | fzf +m) &&
+        cd "$dir"
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
