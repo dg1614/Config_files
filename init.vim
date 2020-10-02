@@ -10,8 +10,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Command-line fuzzy finder from: https://github.com/junegunn/fzf
 Plug 'junegunn/fzf' , { 'do': { -> fzf#install() } }
 
-" Commenting shortcuts from: https://github.com/preservim/nerdcommenter
-Plug 'preservim/nerdcommenter'
+"" Commenting shortcuts from: https://github.com/preservim/nerdcommenter
+"Plug 'preservim/nerdcommenter'
 
 call plug#end()
 
@@ -22,7 +22,7 @@ set background=light
 
 set number
 syntax enable
-colorscheme torte
+colorscheme morning
 
 set wildmenu
 set wildmode=list:longest,full
@@ -44,6 +44,8 @@ set sidescrolloff=5
 
 " Show matching brackets
 set showmatch
+set ignorecase
+set smartcase
 
 " Show when line too long in Fortran
 highlight OverLengthHL ctermbg=238 guibg=#dfffff 
