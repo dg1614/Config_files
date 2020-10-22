@@ -4,6 +4,7 @@ if [[ -z "$LC_ALL" ]]; then
   export LANG='en_GB.UTF-8'
   export LC_ALL='en_GB.UTF-8'
 fi
+export PATH="$HOME/bin:$PATH"
 
 # Colour setup
 autoload -U colors && colors
@@ -13,6 +14,7 @@ for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
         eval BOLD_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
 done
 eval RESET='%{$reset_color%}'
+NEWLINE=$'\n'
 
 # Customise command prompt
 set_prompt () {
@@ -36,7 +38,7 @@ set_prompt () {
         fi
         # Print the working directory and prompt marker in blue, and reset
         # the text color to the default.
-        PROMPT+="${YELLOW} ${CYAN}%~ ${BOLD_GREEN}\$${RESET} "
+        PROMPT+="${YELLOW} ${CYAN}%~ ${BOLD_GREEN}${NEWLINE}\$${RESET} "
 }
 precmd() {set_prompt ; }
 
@@ -54,11 +56,17 @@ alias l.='ls -Gd .*'
 alias ll='ls -Gl'
 alias clc='clear; l'
 alias rm='rm -f'
+
 alias ftags='ctags --fortran-kinds=+i *.f'      # fortran tags 
-#alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
+alias num='cd ~/Documents/Numerics'             # cd to Numerics
+alias matlab='/Applications/MATLAB_R2020b.app/bin/matlab -nojvm -nodesktop'     # run matlab from terminal
+
+alias pdfmerge='~/Documents/Numerics/PDF-Tools/merge_general.sh'
+alias lacprm-plot='~/Documents/Numerics/Lacprm/Post-processing/plotter.py'
 
 # Fzf quick cd
 fd() {
+        cd ~/Documents/Numerics
         local dir
         dir=$(find ${1:-.} -path '*/\.*' -prune \
                 -o -type d -print 2> /dev/null | fzf +m) &&

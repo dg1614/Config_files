@@ -9,6 +9,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Command-line fuzzy finder from: https://github.com/junegunn/fzf
 Plug 'junegunn/fzf' , { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 "" Commenting shortcuts from: https://github.com/preservim/nerdcommenter
 "Plug 'preservim/nerdcommenter'
@@ -55,5 +56,21 @@ augroup overLengthaugrp
 augroup END
 
 "---------------------------------------------------------
+" Fzf settings
 
+" Preview window position and size
+let g:fzf_layout = { 'down': '40%' }
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 
+" Rg searches in non-git folders too
+command! -bang -nargs=* Rg
+        \ call fzf#vim#grep(
+        \   "rg -u --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1, 
+        \   fzf#vim#with_preview(), <bang>0)
+
+noremap <silent> <C-p> :Files<CR>
+noremap <silent> <C-a> :Files~<CR>
+
+noremap <C-f> :Rg! 
+
+"---------------------------------------------------------
