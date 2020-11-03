@@ -69,7 +69,7 @@ command! -bang -nargs=* Rg
         \   fzf#vim#with_preview(), <bang>0)
 
 noremap <silent> <C-p> :Files<CR>
-noremap <silent> <C-a> :Files~<CR>
+noremap <silent> <C-o> :Files~<CR>
 
 noremap <C-f> :Rg! 
 
