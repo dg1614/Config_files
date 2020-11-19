@@ -57,12 +57,15 @@ alias ll='ls -Gl'
 alias clc='clear; l'
 alias rm='rm -f'
 
-alias ftags='ctags --fortran-kinds=+i *.f'                                      # fortran tags 
-alias num='cd ~/Documents/Numerics'                                             # cd to Numerics
-alias matlab='/Applications/MATLAB_R2020b.app/bin/matlab -nojvm -nodesktop'     # run matlab from terminal
+alias ftags='ctags --fortran-kinds=+i *.f'                                              # fortran tags 
+alias f-format='~/Documents/Numerics/Lacprm/Post-processing/findent.sh'                 # fortran formatter
+alias num='cd ~/Documents/Numerics'                                                     # cd to Numerics
+alias matlab='/Applications/MATLAB_R2020b.app/bin/matlab -nojvm -nodesktop'             # run matlab from terminal
 
-alias pdfmerge='~/Documents/Numerics/PDF-Tools/merge_general.sh'                # merge pdf plots in ./Plots
-alias lacprm-plot='~/Documents/Numerics/Lacprm/Post-processing/plotter.py'      # plot lacprm species profiles
+alias pdfmerge='~/Documents/Numerics/PDF-Tools/merge_general.sh'                        # merge pdf plots in ./Plots
+alias lacprm-plot='~/Documents/Numerics/Lacprm/Post-processing/plotter.py'              # plot lacprm species profiles
+alias lacprm-an='~/Documents/Numerics/Lacprm/AnalysisFiles/Rate_analysis/an_lacprm.sh'  # lacprm rate analysis
+alias stir-an='~/Documents/Numerics/IDT/RateAnalysis/an_stir.sh'                        # stir rate analysis
 
 # Fzf quick cd
 fd() {
